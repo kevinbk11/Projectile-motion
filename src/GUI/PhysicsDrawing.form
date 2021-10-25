@@ -98,7 +98,7 @@
           <gridbag weightx="1.0" weighty="1.0"/>
         </constraints>
         <properties>
-          <text value="Button"/>
+          <text value="計算"/>
         </properties>
       </component>
     </children>
