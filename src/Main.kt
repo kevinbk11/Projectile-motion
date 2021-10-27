@@ -2,7 +2,6 @@ import GUI.PhysicsDrawing
 import java.awt.Color
 import java.awt.Font
 import java.awt.Graphics
-import java.awt.Polygon
 import javax.swing.JFrame
 import javax.swing.JPanel
 import kotlin.math.*
@@ -27,17 +26,18 @@ fun main(args:Array<String>)
     var j2 = JFrame("結果")
     p.button1.addActionListener {
         val v =p.v.text.toDouble()
-        val D = p.D.text.toDouble()
+        val D = p.C.text.toDouble()*p.P.text.toDouble()*p.A.text.toDouble()/2
         val m = p.m.text.toDouble()
         var h=0.0
         if(p.h.text!="")
         {
-            h =(p.h.text.toInt()/10).toDouble()
+            h =(p.h.text.toDouble()/100)
         }
         var bigXL = mutableListOf<Double>()
         var bigYL = mutableListOf<Double>()
         var ans=0
         var bigX = 0.0
+        val dt = 0.001
         //----------模擬過程-----------//
         for(theta in 0..90)
         {
@@ -47,7 +47,7 @@ fun main(args:Array<String>)
             val vx = cos(3.14159/180*theta)*v
             val vy = sin(3.14159/180*theta)*v
             var lastX:Double=0.0
-            var lastY:Double=h.toDouble()
+            var lastY:Double=h
             var lastVx:Double=vx
             var lastVy:Double=vy
             var lastAx:Double=0.0
@@ -57,14 +57,14 @@ fun main(args:Array<String>)
             {
                 val ax=dm*abs(lastVx)*lastVx
                 val ay=dm*abs(lastVy)*lastVy-9.8
-                val Vx = lastVx+lastAx*0.001
-                val Vy = lastVy+lastAy*0.001
-                val xl = lastX+lastVx*0.001+lastAx*0.001*0.001/2
-                val yl = lastY+lastVy*0.001+lastAy*0.001*0.001/2
+                val Vx = lastVx+lastAx*dt
+                val Vy = lastVy+lastAy*dt
+                val xl = lastX+lastVx*dt+lastAx*dt*dt/2
+                val yl = lastY+lastVy*dt+lastAy*dt*dt/2
                 if(yl<0.0)break
                 x.add(xl*10)
                 y.add(yl*10)
-                i+=0.001
+                i+=dt
                 lastAx = ax
                 lastAy = ay
                 lastVx = Vx
@@ -93,7 +93,7 @@ fun main(args:Array<String>)
             add(drawPanel(bigXL,bigYL,ans))
         }
     }
-    j.setSize(200,100)
+    j.setSize(200,200)
     j.isVisible=true
     j.isResizable=false
     j.contentPane=p.Panel
