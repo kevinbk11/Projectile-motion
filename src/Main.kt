@@ -25,6 +25,7 @@ fun main(args:Array<String>)
     val j = JFrame("")
     val p = PhysicsDrawing()
     var j2 = JFrame("結果")
+    j.defaultCloseOperation=JFrame.EXIT_ON_CLOSE
     p.button1.addActionListener {
         val v =p.v.text.toDouble()
         val D = p.C.text.toDouble()*p.P.text.toDouble()*p.A.text.toDouble()/2
