@@ -77,7 +77,7 @@ fun main(args:Array<String>)
             add(drawPanel(bigXL,bigYL,ans))
         }
     }
-    j.setSize(200,100)
+    j.setSize(200,80)
     j.isVisible=true
     j.isResizable=false
     j.contentPane=p.Panel
