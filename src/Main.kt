@@ -7,15 +7,17 @@ import javax.swing.JFrame
 import javax.swing.JPanel
 import kotlin.math.*
 
-class drawPanel(var x:MutableList<Double>,var y:MutableList<Double>,var theta:Int):JPanel(){
+class drawPanel(var x:MutableList<Double>,var y:MutableList<Double>,var theta:Double):JPanel(){
     override fun paint(g:Graphics)
     {
         super.paint(g)
         g.font=Font("TimesRoman",Font.PLAIN,18)
-        g.drawString("${theta}度時有最遠射程",x.max()!!.toInt()-20,20)
+        if(y[0]<=0)theta=45.00
+        g.drawString("${theta.toFloat()}度時有最遠射程",x.max()!!.toInt()-20,20)
+        g.drawString("最遠射程${x.max()!!.toFloat()/10}",x.max()!!.toInt()-20,40)
         for(i in 0..x.lastIndex-1)
         {
-            g.drawLine((x[i]).toInt(),(y.max()!!-y[i]).toInt(),(x[i+1]).toInt(),(y.max()!!-y[i+1]).toInt())
+            g.drawLine((x[i]).toInt(),(y.max()!!-y[i]+40).toInt(),(x[i+1]).toInt(),(y.max()!!-y[i+1]+40).toInt())
         }
         g.color= Color.BLACK
     }
@@ -34,9 +36,11 @@ fun main(args:Array<String>)
         }
         var bigXL = mutableListOf<Double>()
         var bigYL = mutableListOf<Double>()
-        var ans=0
+        var ans=0.0
         var bigX = 0.0
-        for(theta in 0..90)
+        var theta = 0.0
+        var dtheta = 0.01
+        while(theta<90.0)
         {
             var yL = 0.1
             var i =0.000
@@ -59,13 +63,14 @@ fun main(args:Array<String>)
                 bigYL=y
                 ans=theta
             }
+            theta+=dtheta
         }
         println(ans)
         j2.isVisible=false
         j2 = JFrame("結果")
         with(j2)
         {
-            setSize(bigXL.max()!!.toInt()+180,(bigYL.max()!!).toInt()+40)
+            setSize(bigXL.max()!!.toInt()+180,(bigYL.max()!!).toInt()+80)
             setLocation(200,0)
             isVisible=true
             isResizable=false
