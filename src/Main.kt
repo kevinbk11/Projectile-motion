@@ -6,15 +6,16 @@ import javax.swing.JFrame
 import javax.swing.JPanel
 import kotlin.math.*
 
-class drawPanel(var x:MutableList<Double>,var y:MutableList<Double>,var theta:Float):JPanel(){
+class drawPanel(var x:MutableList<Double>,var y:MutableList<Double>,var theta:Double):JPanel(){
     override fun paint(g:Graphics)
     {
         super.paint(g)
         g.font=Font("TimesRoman",Font.PLAIN,18)
-        g.drawString("${theta}度時有最遠射程",x.max()!!.toInt()-50,20)
+        g.drawString("${theta.toFloat()}度時有最遠射程",x.max()!!.toInt()+100,20)
+        g.drawString("最遠射程=${x.max()!!.toFloat()/10}",x.max()!!.toInt()+100,40)
         for(i in 0..x.lastIndex-1)
         {
-            g.drawLine((x[i]).toInt(),(y.max()!!-y[i]).toInt(),(x[i+1]).toInt(),(y.max()!!-y[i+1]).toInt())
+            g.drawLine((x[i]).toInt(),(y.max()!!-y[i]+40).toInt(),(x[i+1]).toInt(),(y.max()!!-y[i+1]+40).toInt())
         }
         g.color= Color.BLACK
     }
@@ -35,12 +36,13 @@ fun main(args:Array<String>)
         }
         var bigXL = mutableListOf<Double>()
         var bigYL = mutableListOf<Double>()
-        var ans=0.0F
+        var ans=0.0
         var bigX = -1.0
         val dt = 0.001
-        var theta = 0.0F
+        var theta = 0.0
+        val dtheta = 0.01
         //----------模擬過程-----------//
-        while(theta!=90.0F)
+        while(theta<=90.0F)
         {
             var i =0.000
             val x= mutableListOf<Double>()
@@ -62,7 +64,6 @@ fun main(args:Array<String>)
                 val Vy = lastVy+lastAy*dt
                 val xl = lastX+lastVx*dt+lastAx*dt*dt/2
                 val yl = lastY+lastVy*dt+lastAy*dt*dt/2
-                if(lastY<0.0)break
                 x.add(xl*10)
                 y.add(yl*10)
                 i+=dt
@@ -72,19 +73,16 @@ fun main(args:Array<String>)
                 lastVy = Vy
                 lastX = xl
                 lastY = yl
+                if(lastY<0.0)break
             }
-            if(x.last()<bigX)
-            {
-                ans=theta
-                break
-            }
-            else
+            if(x.last()>bigX)
             {
                 bigX=x.last()
                 bigXL=x
                 bigYL=y
+                ans=theta
             }
-            theta+=(dt.toFloat()*10F)
+            theta+=dtheta
         }
         //----------模擬過程---------//
         println(ans)
@@ -93,7 +91,7 @@ fun main(args:Array<String>)
         j2 = JFrame("結果")
         with(j2)
         {
-            setSize(bigXL.max()!!.toInt()+180,(bigYL.max()!!).toInt()+40)
+            setSize(bigXL.max()!!.toInt()+300,(bigYL.max()!!).toInt()+80)
             setLocation(200,0)
             isVisible=true
             isResizable=true
