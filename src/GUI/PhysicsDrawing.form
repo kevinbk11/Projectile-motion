@@ -23,7 +23,7 @@
               <gridbag weightx="1.0" weighty="1.0"/>
             </constraints>
             <properties>
-              <text value="0.1309"/>
+              <text value="0.2"/>
             </properties>
           </component>
           <component id="dcce3" class="javax.swing.JTextField" binding="v">
@@ -34,7 +34,7 @@
               <gridbag weightx="1.0" weighty="1.0"/>
             </constraints>
             <properties>
-              <text value="50"/>
+              <text value="15"/>
             </properties>
           </component>
           <component id="2fbd3" class="javax.swing.JTextField" binding="C">
@@ -45,7 +45,7 @@
               <gridbag weightx="100.0" weighty="1.0"/>
             </constraints>
             <properties>
-              <text value="1.2"/>
+              <text value="0.1"/>
             </properties>
           </component>
           <component id="a3f3e" class="javax.swing.JLabel">
@@ -104,7 +104,7 @@
               <gridbag weightx="0.0" weighty="1.0"/>
             </constraints>
             <properties>
-              <text value="0.3"/>
+              <text value="1.29"/>
             </properties>
           </component>
           <component id="320cb" class="javax.swing.JTextField" binding="A">
@@ -115,7 +115,7 @@
               <gridbag weightx="0.0" weighty="1.0"/>
             </constraints>
             <properties>
-              <text value="0.001963"/>
+              <text value="0.015394"/>
             </properties>
           </component>
           <component id="a0bb7" class="javax.swing.JLabel">
