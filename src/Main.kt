@@ -12,7 +12,7 @@ class drawPanel(var x:MutableList<Double>,var y:MutableList<Double>,var theta:Do
         super.paint(g)
         g.font=Font("TimesRoman",Font.PLAIN,18)
         g.drawString("${theta.toFloat()}度時有最遠射程",x.max()!!.toInt()+100,20)
-        g.drawString("最遠射程=${x.max()!!.toFloat()/10}",x.max()!!.toInt()+100,40)
+        g.drawString("最遠射程=${x.max()!!.toFloat()/15}",x.max()!!.toInt()+100,40)
         for(i in 0..x.lastIndex-1)
         {
             g.drawLine((x[i]).toInt(),(y.max()!!-y[i]+40).toInt(),(x[i+1]).toInt(),(y.max()!!-y[i+1]+40).toInt())
@@ -65,7 +65,7 @@ fun main(args:Array<String>)
                 val Vy = lastVy+lastAy*dt
                 val xl = lastX+lastVx*dt+lastAx*dt*dt/2
                 val yl = lastY+lastVy*dt+lastAy*dt*dt/2
-                x.add(xl*10)
+                x.add(xl*15)
                 y.add(yl*10)
                 i+=dt
                 lastAx = ax
