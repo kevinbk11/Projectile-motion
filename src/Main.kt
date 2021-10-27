@@ -38,6 +38,7 @@ fun main(args:Array<String>)
         var bigYL = mutableListOf<Double>()
         var ans=0
         var bigX = 0.0
+        //----------模擬過程-----------//
         for(theta in 0..90)
         {
             var i =0.000
@@ -79,6 +80,7 @@ fun main(args:Array<String>)
                 ans=theta
             }
         }
+        //----------模擬過程---------//
         println(ans)
         j2.isVisible=false
         j2 = JFrame("結果")
