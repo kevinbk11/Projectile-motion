@@ -27,10 +27,12 @@ fun main(args:Array<String>)
     var j2 = JFrame("結果")
     p.button1.addActionListener {
         val v =p.v.text.toDouble()
-        var h=0
+        val D = p.D.text.toDouble()
+        val m = p.m.text.toDouble()
+        var h=0.0
         if(p.h.text!="")
         {
-            h =p.h.text.toInt()
+            h =(p.h.text.toInt()/10).toDouble()
         }
         var bigXL = mutableListOf<Double>()
         var bigYL = mutableListOf<Double>()
@@ -38,19 +40,36 @@ fun main(args:Array<String>)
         var bigX = 0.0
         for(theta in 0..90)
         {
-            var yL = 0.1
             var i =0.000
             val x= mutableListOf<Double>()
             val y= mutableListOf<Double>()
             val vx = cos(3.14159/180*theta)*v
             val vy = sin(3.14159/180*theta)*v
-            while(yL>=0)
+            var lastX:Double=0.0
+            var lastY:Double=h.toDouble()
+            var lastVx:Double=vx
+            var lastVy:Double=vy
+            var lastAx:Double=0.0
+            var lastAy:Double=0.0
+            val dm = -(D/m)
+            while(lastY>=0.0)
             {
-                yL=-4.9*i*i+vy*i+h/100
-                if(yL<0)break
-                x.add(i*vx*50)
-                y.add(yL*50)
+                val ax=dm*abs(lastVx)*lastVx
+                val ay=dm*abs(lastVy)*lastVy-9.8
+                val Vx = lastVx+lastAx*0.001
+                val Vy = lastVy+lastAy*0.001
+                val xl = lastX+lastVx*0.001+lastAx*0.001*0.001/2
+                val yl = lastY+lastVy*0.001+lastAy*0.001*0.001/2
+                if(yl<0.0)break
+                x.add(xl*10)
+                y.add(yl*10)
                 i+=0.001
+                lastAx = ax
+                lastAy = ay
+                lastVx = Vx
+                lastVy = Vy
+                lastX = xl
+                lastY = yl
             }
             if(x.last()>bigX)
             {
@@ -68,7 +87,7 @@ fun main(args:Array<String>)
             setSize(bigXL.max()!!.toInt()+180,(bigYL.max()!!).toInt()+40)
             setLocation(200,0)
             isVisible=true
-            isResizable=false
+            isResizable=true
             add(drawPanel(bigXL,bigYL,ans))
         }
     }

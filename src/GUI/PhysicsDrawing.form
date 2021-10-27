@@ -15,14 +15,16 @@
         <properties/>
         <border type="none"/>
         <children>
-          <component id="e8e99" class="javax.swing.JTextField" binding="textField2" default-binding="true">
+          <component id="e8e99" class="javax.swing.JTextField" binding="m">
             <constraints>
               <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="9" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
               <gridbag weightx="1.0" weighty="1.0"/>
             </constraints>
-            <properties/>
+            <properties>
+              <text value="0.1309"/>
+            </properties>
           </component>
           <component id="dcce3" class="javax.swing.JTextField" binding="v">
             <constraints>
@@ -32,17 +34,19 @@
               <gridbag weightx="1.0" weighty="1.0"/>
             </constraints>
             <properties>
-              <text value=""/>
+              <text value="2"/>
             </properties>
           </component>
-          <component id="2fbd3" class="javax.swing.JTextField" binding="textField1" default-binding="true">
+          <component id="2fbd3" class="javax.swing.JTextField" binding="D">
             <constraints>
               <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="9" fill="1" indent="0" use-parent-layout="false">
                 <preferred-size width="150" height="-1"/>
               </grid>
               <gridbag weightx="100.0" weighty="1.0"/>
             </constraints>
-            <properties/>
+            <properties>
+              <text value="0.0003534"/>
+            </properties>
           </component>
           <component id="a3f3e" class="javax.swing.JLabel">
             <constraints>
@@ -78,7 +82,9 @@
               </grid>
               <gridbag weightx="0.0" weighty="1.0"/>
             </constraints>
-            <properties/>
+            <properties>
+              <text value="0"/>
+            </properties>
           </component>
           <component id="1a273" class="javax.swing.JLabel">
             <constraints>

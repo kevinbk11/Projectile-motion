@@ -4,9 +4,9 @@ import javax.swing.*;
 
 public class PhysicsDrawing {
     public JPanel Panel;
-    public JTextField textField2;
+    public JTextField m;
     public JTextField v;
-    public JTextField textField1;
+    public JTextField D;
     public JButton button1;
     public JTextField h;
     public JPanel drawPanel;
