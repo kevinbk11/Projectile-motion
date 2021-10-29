@@ -33,7 +33,7 @@ fun main(args:Array<String>)
         var h=0.0
         if(p.h.text!="")
         {
-            h =(p.h.text.toDouble()/100)
+            h =p.h.text.toDouble()
         }
         var bigXL = mutableListOf<Double>()
         var bigYL = mutableListOf<Double>()
