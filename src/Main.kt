@@ -51,7 +51,7 @@ fun main(args:Array<String>)
             val vy = sin(3.14159/180*theta)*v
             while(yL>=0)
             {
-                yL=-4.9*i*i+vy*i+h/100
+                yL=-4.9*i*i+vy*i+h
                 if(yL<0)break
                 x.add(i*vx*50)
                 y.add(yL*50)
