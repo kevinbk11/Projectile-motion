@@ -30,10 +30,10 @@ fun main(args:Array<String>)
     j.defaultCloseOperation=JFrame.EXIT_ON_CLOSE
     p.button1.addActionListener {
         val v =p.v.text.toDouble()
-        var h=0
+        var h=0.0
         if(p.h.text!="")
         {
-            h =p.h.text.toInt()
+            h =p.h.text.toDouble()
         }
         var bigXL = mutableListOf<Double>()
         var bigYL = mutableListOf<Double>()
