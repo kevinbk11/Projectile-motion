@@ -92,7 +92,7 @@ fun main(args:Array<String>)
         j2 = JFrame("結果")
         with(j2)
         {
-            setSize(bigXL.max()!!.toInt()+300,(bigYL.max()!!).toInt()+80)
+            setSize(bigXL.maxOrNull()!!.toInt()+300,(bigYL.maxOrNull()!!).toInt()+80)
             setLocation(200,0)
             isVisible=true
             isResizable=true
